@@ -53,7 +53,7 @@ export default function Home() {
     <li><Link href="/playlist" className="hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150">playlist</Link></li>
     <li>
       <span
-        onClick={() => scrollTo('about')}
+        onClick={() => scrollTo('profile')}
         className="cursor-pointer hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150"
       >about</span>
     </li>
@@ -85,9 +85,9 @@ export default function Home() {
       {/* ヒーローの高さ分スペース */}
       <div className="h-screen" />
 
-      {/* about */}
-      <section id="about" className="px-8 py-24 max-w-2xl mx-auto mt-48">
-        <h2 className="text-xs tracking-widest text-[#7a7060] mb-12">ABOUT</h2>
+      {/* profile */}
+      <section id="profile" className="px-8 py-24 max-w-2xl mx-auto mt-48">
+        <h2 className="text-xs tracking-widest text-[#7a7060] mb-12">PROFILE</h2>
         <img
           src="/profile.JPG"
           alt="Ryota Senō"
