@@ -50,15 +50,15 @@ export default function Home() {
 <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6">
   <span className="text-sm tracking-widest">Ryota Senō</span>
   <ul className="flex gap-8 text-sm tracking-widest text-[#7a7060]">
-    <li><Link href="/playlist" className="hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150">playlist</Link></li>
+    <li><Link href="/Playlist" className="hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150">playlist</Link></li>
     <li>
       <span
         onClick={() => scrollTo('profile')}
         className="cursor-pointer hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150"
-      >about</span>
+      >Profile</span>
     </li>
     <li>
-    <Link href="/service" className="hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150">service</Link>
+    <Link href="/Service" className="hover:bg-[#2c2820] hover:text-white px-2 py-1 transition-colors duration-150">service</Link>
     </li>
   </ul>
 </nav>
@@ -87,7 +87,7 @@ export default function Home() {
 
       {/* profile */}
       <section id="profile" className="px-8 py-24 max-w-2xl mx-auto mt-48">
-        <h2 className="text-xs tracking-widest text-[#7a7060] mb-12">PROFILE</h2>
+        <h2 className="text-xs tracking-widest text-[#7a7060] mb-12">Profile</h2>
         <img
           src="/profile.JPG"
           alt="Ryota Senō"
