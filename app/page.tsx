@@ -35,8 +35,8 @@ export default function Home() {
       setScale(0.5 + scaleProgress * 6);
   
       // aboutが見え始めたら白くフェード（画面の80%スクロールあたりから）
-      const fadeStart = windowH * 0.8;
-      const fadeEnd = windowH * 1.5;
+      const fadeStart = windowH * 0.7;
+      const fadeEnd = windowH * 1.0;
       const fadeProgress = Math.min(Math.max((scrollY - fadeStart) / (fadeEnd - fadeStart), 0), 1);
       setWhiteOpacity(fadeProgress);
     };
