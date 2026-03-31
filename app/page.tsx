@@ -102,9 +102,6 @@ export default function Home() {
         <p className="text-sm leading-8 text-[#2c2820] mt-6">
           音はホコリのような粒だと思っています。空間を漂い、人の体を通り抜けていく。プレイリストを作るとき、その粒が誰かの体験をそっと支えるように選びます。
         </p>
-        <p className="text-sm leading-8 text-[#2c2820] mt-6">
-          「夕暮の集い」というイベントを友人と定期的に開催しています。
-        </p>
       </section>
 
       {/* service */}
