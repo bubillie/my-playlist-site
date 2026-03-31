@@ -104,11 +104,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* service */}
-      <section id="service" className="px-8 py-24 max-w-2xl mx-auto">
-        <h2 className="text-xs tracking-widest text-[#7a7060] mb-12">SERVICE</h2>
-        <p className="text-sm text-[#7a7060]">coming soon</p>
-      </section>
+
 
       {/* フッター */}
       <footer className="px-8 py-12 border-t border-[#e0d9cc] text-xs text-[#7a7060] tracking-widest">
