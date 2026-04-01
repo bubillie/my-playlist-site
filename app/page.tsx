@@ -93,15 +93,21 @@ export default function Home() {
           alt="Ryota Senō"
           className="w-48 h-48 object-cover mb-10"
         />
-        <p className="text-sm leading-8 text-[#2c2820]">
-          幼い頃から、父のギターの音の中で育ちました。音楽は聴くものでも弾くものでもなく、ただそこにある空気のようなものでした。
-        </p>
-        <p className="text-sm leading-8 text-[#2c2820] mt-6">
-          大学でギターを手に取り、録音をはじめ、気づけば音楽しかない、という場所に辿り着いていました。今もDJをしたり、曲を作ったり、音を録ったりしながら、音そのものについて考え続けています。
-        </p>
-        <p className="text-sm leading-8 text-[#2c2820] mt-6">
-          音はホコリのような粒だと思っています。空間を漂い、人の体を通り抜けていく。プレイリストを作るとき、その粒が誰かの体験をそっと支えるように選びます。
-        </p>
+        <p className="text-sm leading-9 text-[#2c2820]">
+  広告募集中看板を集めている。<br />
+  録音が好きで、知らない音を探している。
+</p>
+<p className="text-sm leading-9 text-[#2c2820] mt-8">
+  幼い頃から、父のギターの音の中で育った。<br />
+  大学でギターを手に取り、録音をはじめ、気づけば音楽しかない場所に辿り着いていた。
+</p>
+<p className="text-sm leading-9 text-[#2c2820] mt-8">
+  音はホコリのような粒だと思っている。空間を漂い、人の体を通り抜けていく。<br />
+  プレイリストを作るとき、その粒が誰かの体験をそっと支えるように選ぶ。
+</p>
+<p className="text-sm leading-9 text-[#2c2820] mt-8">
+  音楽をつくるひと、21歳。
+</p>
       </section>
 
 

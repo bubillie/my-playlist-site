@@ -48,21 +48,16 @@ const sections: Section[] = [
         tag: "古着屋",
         instagram: "https://instagram.com/saji_used",
         playlists: [
-          // プレイリストを追加するときはここに1行追加する
-          { title: "SAJIのじかん", spotify: "#", apple: "#" },
-          { title: "SAJIの日曜日", spotify: "#", apple: "#" },
-          { title: "雨の日のSAJI", spotify: "#", apple: "#" },
+          // Apple MusicのURLが揃ったら apple: "#" を書き換える
+          { title: "SAJIのじかん", spotify: "https://open.spotify.com/playlist/2txXyF5Eae8uKG6kodFubU", apple: "#" },
+          { title: "SAJIの日曜日", spotify: "https://open.spotify.com/playlist/2MB3h9vUm6c1pc3T0V1HNG", apple: "#" },
+          { title: "雨の日のSAJI", spotify: "https://open.spotify.com/playlist/2x2z15ymh6xf2U57j1JiFA", apple: "#" },
         ],
       },
       // 新しいお店を追加するときはここに { name, tag, instagram, playlists } を追加する
     ],
     singles: [
-      // グループに属さない単体プレイリスト（展覧会用など）
-      {
-        title: "今日の世界が青さに沈んでいく前に星と雨を強く抱きつくしたい",
-        spotify: "https://open.spotify.com/playlist/66SffRkAbO6VmBYPSUE4Ko",
-        apple: "https://music.apple.com/jp/playlist/pl.u-11zBB6ocN7Rxl06",
-      },
+      // 単体プレイリストを追加するときはここに追加する
     ],
   },
   {
@@ -92,31 +87,29 @@ const sections: Section[] = [
 
 // =============================================
 // 電光掲示板コンポーネント
-// artists が設定されているプレイリストに表示される
 // =============================================
 
 function Marquee({ text, isHovered }: { text: string; isHovered: boolean }) {
-    const repeated = `${text} · ${text} · `;
-    const bg = isHovered ? "#2c2820" : "#f5f0e8";
-    return (
-      <div className="marquee-outer relative">
-        <div className="absolute left-0 top-0 h-full w-6 z-10 pointer-events-none"
-          style={{ background: `linear-gradient(to right, ${bg}, transparent)` }}
-        />
-        <div className="absolute right-0 top-0 h-full w-6 z-10 pointer-events-none"
-          style={{ background: `linear-gradient(to left, ${bg}, transparent)` }}
-        />
-        <div className="animate-marquee text-xs text-[#7a7060]">
-          <span className="inline-block pr-4">{repeated}</span>
-          <span className="inline-block pr-4">{repeated}</span>
-        </div>
+  const repeated = `${text} · ${text} · `;
+  const bg = isHovered ? "#2c2820" : "#f5f0e8";
+  return (
+    <div className="marquee-outer relative">
+      <div className="absolute left-0 top-0 h-full w-6 z-10 pointer-events-none"
+        style={{ background: `linear-gradient(to right, ${bg}, transparent)` }}
+      />
+      <div className="absolute right-0 top-0 h-full w-6 z-10 pointer-events-none"
+        style={{ background: `linear-gradient(to left, ${bg}, transparent)` }}
+      />
+      <div className="animate-marquee text-xs text-[#7a7060]">
+        <span className="inline-block pr-4">{repeated}</span>
+        <span className="inline-block pr-4">{repeated}</span>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 // =============================================
 // プレイリスト1行のコンポーネント
-// ホバー時にジャケ写がスライドダウンで表示される
 // =============================================
 
 function PlaylistRow({
@@ -130,47 +123,25 @@ function PlaylistRow({
 }) {
   return (
     <div>
-      {/* プレイリストのタイトル行 */}
       <div
         onMouseEnter={() => (pl.image ? setHovered(pl.title) : null)}
         onMouseLeave={() => setHovered(null)}
         className="flex justify-between items-center px-4 py-3 hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150 group"
       >
         <span className="text-sm shrink-0 mr-4">{pl.title}</span>
-
-        {/* アーティスト名の電光掲示板（artists が設定されているときだけ表示） */}
         {pl.artists && <Marquee text={pl.artists} isHovered={hovered === pl.title} />}
-
         <div className="flex gap-4 text-xs opacity-60 group-hover:opacity-100 shrink-0 ml-4">
-          <span
-            onClick={() => window.open(pl.spotify, "_blank")}
-            className="cursor-pointer hover:underline"
-          >
+          <span onClick={() => window.open(pl.spotify, "_blank")} className="cursor-pointer hover:underline">
             Spotify
           </span>
-          <span
-            onClick={() => window.open(pl.apple, "_blank")}
-            className="cursor-pointer hover:underline"
-          >
+          <span onClick={() => window.open(pl.apple, "_blank")} className="cursor-pointer hover:underline">
             Apple Music
           </span>
         </div>
       </div>
-
-      {/* ジャケ写：image が設定されていてホバー中のときだけ表示 */}
       {pl.image && (
-        <div
-          style={{
-            maxHeight: hovered === pl.title ? "300px" : "0px",
-            overflow: "hidden",
-            transition: "max-height 0.4s ease",
-          }}
-        >
-          <img
-            src={pl.image}
-            alt={pl.title}
-            className="w-48 h-48 object-cover ml-4 mb-4"
-          />
+        <div style={{ maxHeight: hovered === pl.title ? "300px" : "0px", overflow: "hidden", transition: "max-height 0.4s ease" }}>
+          <img src={pl.image} alt={pl.title} className="w-48 h-48 object-cover ml-4 mb-4" />
         </div>
       )}
     </div>
@@ -182,79 +153,48 @@ function PlaylistRow({
 // =============================================
 
 export default function PlaylistPage() {
-  // 開いているセクション名を管理（例: "Works"）
   const [openSection, setOpenSection] = useState<string | null>(null);
-  // 開いているショップ名を管理（例: "SAJI"）
   const [openShop, setOpenShop] = useState<string | null>(null);
-  // ホバー中のプレイリスト名を管理（ジャケ写表示用）
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
     <main
       className="min-h-screen text-[#2c2820]"
-      style={{
-        backgroundImage: "url('/texture.JPG')",
-        backgroundRepeat: "repeat",
-        backgroundSize: "300px",
-      }}
+      style={{ backgroundImage: "url('/texture.JPG')", backgroundRepeat: "repeat", backgroundSize: "300px" }}
     >
-      {/* ヘッダー：クリックでトップページへ */}
       <header className="px-8 py-6 border-b border-[#e0d9cc]">
-        <Link
-          href="/"
-          className="text-sm tracking-widest text-[#7a7060] px-2 py-1 hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150"
-        >
+        <Link href="/" className="text-sm tracking-widest text-[#7a7060] px-2 py-1 hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150">
           Ryota Senō
         </Link>
       </header>
 
-      {/* プレイリスト一覧 */}
       <section className="px-8 py-16 max-w-2xl mx-auto">
-        <h1 className="text-xs tracking-widest text-[#7a7060] mb-12">
-          PLAYLIST
-        </h1>
+        <h1 className="text-xs tracking-widest text-[#7a7060] mb-12">PLAYLIST</h1>
         <div className="border-t border-[#e0d9cc]">
           {sections.map((sec) => (
             <div key={sec.name} className="border-b border-[#e0d9cc]">
-
-              {/* セクション見出し行（Works / Personal） */}
               <button
-                onClick={() =>
-                  setOpenSection(openSection === sec.name ? null : sec.name)
-                }
+                onClick={() => setOpenSection(openSection === sec.name ? null : sec.name)}
                 className="w-full py-6 flex justify-between items-center px-2 hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150"
               >
                 <span className="text-sm tracking-widest">{sec.name}</span>
-                <span className="text-xs">
-                  {openSection === sec.name ? "−" : "+"}
-                </span>
+                <span className="text-xs">{openSection === sec.name ? "−" : "+"}</span>
               </button>
 
-              {/* セクションが開いているとき */}
               {openSection === sec.name && (
                 <div className="border-l border-[#e0d9cc] ml-2 mb-4">
-
-                  {/* ショップグループ（SAJIなど） */}
                   {sec.shops.map((shop) => (
                     <div key={shop.name}>
                       <button
-                        onClick={() =>
-                          setOpenShop(openShop === shop.name ? null : shop.name)
-                        }
+                        onClick={() => setOpenShop(openShop === shop.name ? null : shop.name)}
                         className="w-full px-4 py-3 flex justify-between items-center hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-sm tracking-widest">
-                            {shop.name}
-                          </span>
+                          <span className="text-sm tracking-widest">{shop.name}</span>
                           <span className="text-xs opacity-60">{shop.tag}</span>
-                          {/* Instagramアイコン */}
                           {shop.instagram && (
                             <span
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                window.open(shop.instagram!, "_blank");
-                              }}
+                              onClick={(e) => { e.stopPropagation(); window.open(shop.instagram!, "_blank"); }}
                               className="opacity-60 hover:opacity-100 cursor-pointer"
                             >
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -265,35 +205,21 @@ export default function PlaylistPage() {
                             </span>
                           )}
                         </div>
-                        <span className="text-xs">
-                          {openShop === shop.name ? "−" : "+"}
-                        </span>
+                        <span className="text-xs">{openShop === shop.name ? "−" : "+"}</span>
                       </button>
 
-                      {/* ショップのプレイリスト一覧 */}
                       {openShop === shop.name && (
                         <div className="border-l border-[#e0d9cc] ml-4">
                           {shop.playlists.map((pl) => (
-                            <PlaylistRow
-                              key={pl.title}
-                              pl={pl}
-                              hovered={hovered}
-                              setHovered={setHovered}
-                            />
+                            <PlaylistRow key={pl.title} pl={pl} hovered={hovered} setHovered={setHovered} />
                           ))}
                         </div>
                       )}
                     </div>
                   ))}
 
-                  {/* 単体プレイリスト（ショップに属さないもの） */}
                   {sec.singles.map((pl) => (
-                    <PlaylistRow
-                      key={pl.title}
-                      pl={pl}
-                      hovered={hovered}
-                      setHovered={setHovered}
-                    />
+                    <PlaylistRow key={pl.title} pl={pl} hovered={hovered} setHovered={setHovered} />
                   ))}
                 </div>
               )}
@@ -302,12 +228,9 @@ export default function PlaylistPage() {
         </div>
       </section>
 
-      {/* フッター */}
       <footer className="px-8 py-12 border-t border-[#e0d9cc] text-xs text-[#7a7060]">
         <span
-          onClick={() =>
-            window.open("https://instagram.com/bubillie_ryota", "_blank")
-          }
+          onClick={() => window.open("https://instagram.com/bubillie_ryota", "_blank")}
           className="cursor-pointer px-2 py-1 hover:bg-[#2c2820] hover:text-[#f5f0e8] transition-colors duration-150"
         >
           Instagram
