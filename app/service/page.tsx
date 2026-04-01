@@ -15,11 +15,15 @@ export default function ServicePage() {
       </header>
 
       <section className="px-8 py-24 max-w-2xl mx-auto">
-        <h1 className="text-xs tracking-widest text-[#7a7060] mb-16">SERVICE</h1>
+
+        {/* タイトル */}
+        <h1 className="text-xs tracking-widest text-[#7a7060] mb-4">SERVICE</h1>
+        <p className="text-2xl font-light tracking-widest text-[#2c2820] mb-16">Music Curation Service</p>
 
         {/* 導入文 */}
         <div className="mb-20">
           <p className="text-sm leading-9 text-[#2c2820]">
+            音楽で、空間をキュレーションします。<br />
             お店に流れる音楽は、空間そのものです。お客さんが入ってきた瞬間に感じる空気、商品を手に取るときの気持ち、レジを離れるときの余韻。音楽はその全てに静かに関わっています。
           </p>
           <p className="text-sm leading-9 text-[#2c2820] mt-6">
@@ -38,37 +42,31 @@ export default function ServicePage() {
         {/* 提供サービス */}
         <div className="mb-16 border-t border-[#e0d9cc] pt-12">
           <p className="text-xs tracking-widest text-[#7a7060] mb-10">提供サービス</p>
-
           <div className="flex flex-col gap-12">
-
             <div>
               <p className="text-sm font-medium mb-3">プレイリスト制作</p>
               <p className="text-sm leading-8 text-[#7a7060]">
                 場所の雰囲気、時間帯、お客さんの層、どんな体験をしてほしいか。ヒアリングをもとに選曲します。Apple MusicとSpotifyで納品します。
               </p>
             </div>
-
             <div>
               <p className="text-sm font-medium mb-3">ビジュアルデザイン</p>
               <p className="text-sm leading-8 text-[#7a7060]">
                 プレイリストのジャケット・アイコン（正方形）と、ショップカード（QRコードリンク付き）を制作します。音楽とビジュアルをセットでお届けします。
               </p>
             </div>
-
             <div>
               <p className="text-sm font-medium mb-3">追加制作（要相談）</p>
               <p className="text-sm leading-8 text-[#7a7060]">
                 ポスター、カード、掲示物など。まずはご相談ください。
               </p>
             </div>
-
             <div>
               <p className="text-sm font-medium mb-3">音楽の相談</p>
               <p className="text-sm leading-8 text-[#7a7060]">
                 音量感や時間帯の設計、どんな音楽が空間に合うかわからないという段階からでも、一緒に考えます。
               </p>
             </div>
-
           </div>
         </div>
 
@@ -101,20 +99,18 @@ export default function ServicePage() {
         </div>
 
         {/* Instagram導線 */}
-<div className="border-t border-[#e0d9cc] pt-12">
-  <p className="text-xs tracking-widest text-[#7a7060] mb-6">お問い合わせ</p>
-  <Link
-    href="https://instagram.com/bubillie_ryota"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-4 group border-b border-[#2c2820] pb-2 hover:bg-[#2c2820] hover:text-white px-2 pt-3 transition-colors duration-150"
-  >
-    <span className="text-sm tracking-widest">Instagram DMへ</span>
-    <span
-      className="text-sm transition-transform duration-200 group-hover:translate-x-2"
-    >→</span>
-  </Link>
-</div>
+        <div className="border-t border-[#e0d9cc] pt-12">
+          <p className="text-xs tracking-widest text-[#7a7060] mb-6">お問い合わせ</p>
+          <Link
+            href="https://instagram.com/bubillie_ryota"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-4 group border-b border-[#2c2820] pb-2 hover:bg-[#2c2820] hover:text-white px-2 pt-3 transition-colors duration-150"
+          >
+            <span className="text-sm tracking-widest">Instagram DMへ</span>
+            <span className="text-sm transition-transform duration-200 group-hover:translate-x-2">→</span>
+          </Link>
+        </div>
 
       </section>
 
